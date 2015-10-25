@@ -63,16 +63,16 @@
             </div>
 
             <nav class="demo-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
-                <a href="?page=${pagenum-1}" class="demo-nav__button">
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <button class="demo-nav__button"  >
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation" ng-click="lastPage()">
                         <i class="material-icons">arrow_back</i>
                     </button>
                     Newer
-                </a>
+                </button>
                 <div class="section-spacer"></div>
-                <a href="?page=${pagenum+1}" class="demo-nav__button">
+                <a  class="demo-nav__button">
                     Older
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation" ng-click="nextPage()">
                         <i class="material-icons">arrow_forward</i>
                     </button>
                 </a>
