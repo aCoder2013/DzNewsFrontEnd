@@ -1,3 +1,4 @@
+
   <style>
         #view-source {
             position: fixed;
@@ -46,20 +47,19 @@
                 <div class="mdl-color-text--grey-700 mdl-grid mdl-card__supporting-text meta">
                     <div class="mdl-cell mdl-cell--1-col"></div>
                     <div class="mdl-cell mdl-cell--8-col">
-                        <div ng-bind-html='detail.content'></div>
+                      <div ng-bind-html='detail.content'></div>
                     </div>
                     <div class="mdl-cell mdl-cell--1-col"></div>
                 </div>
-                <div class="mdl-color-text--primary-contrast mdl-card__supporting-text comments">
-                    <form>
-                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <textarea rows=1 class="mdl-textfield__input" id="comment"></textarea>
-                            <label for="comment" class="mdl-textfield__label">Join the discussion</label>
-                        </div>
-                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                            <i class="material-icons" role="presentation">check</i><span class="visuallyhidden">add comment</span>
-                        </button>
-                    </form>
+                <div class="mdl-color-text--red-contrast mdl-card__supporting-text comments">
+                  <form action="{{actionUrl}}" method="post">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input type="text" name="content" id="content"/>
+                    </div>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" type="submit">
+                      <i class="material-icons" role="presentation">check</i><span class="visuallyhidden">add comment</span>
+                    </button>
+                  </form>
                     <div class="comment mdl-color-text--grey-700">
                         <header class="comment__header">
                             <img src="../img/co1.jpg" class="comment__avatar">
@@ -134,3 +134,21 @@
     </main>
     <div class="mdl-layout__obfuscator"></div>
 </div>
+<script>
+var editor = new MediumEditor('.editable', {
+    toolbar: {
+        buttons: [
+            'bold',
+            'italic',
+            'quote',
+            'anchor'
+        ]
+    },
+    paste: {
+        cleanPastedHTML: false,
+    },
+    placeholder: {
+      text: '欢迎参与评论！'
+  }
+});
+</script>

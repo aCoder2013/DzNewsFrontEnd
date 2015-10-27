@@ -26,11 +26,26 @@ newsControllers.controller('listController', function ($scope,$http) {
       });
     };
 });
-
 newsControllers.controller("newsDetailCtrl",['$scope', '$routeParams','$http','$sce',
     function($scope, $routeParams,$http,$sce) {
+
+          $scope.formContent;
           $http.get("/api/news/detail/"+$routeParams.id).success(function (data) {
             $scope.detail = data ;
             $scope.detail.content = $sce.trustAsHtml($scope.detail.content);
+            $scope.actionUrl = $sce.trustAsResourceUrl('/api/detail/'+$scope.detail.id+'/comment/new');
         });
+
+        $scope.processForm = function(){
+            console.log($scope.formData);
+            $http({
+              method : 'post',
+              url : $scope.actionUrl,
+              data : $scope.formContent,
+              header:{ 'Content-Type': 'application/x-www-form-urlencoded' }
+            })
+              .success(function(data){
+                  console.log(data);
+              });
+        };
 }]);

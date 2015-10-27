@@ -6,20 +6,24 @@ var dznews = angular.module('dznews', [
     'newsControllers',
 ]);
 
+
 dznews.config(['$routeProvider','$locationProvider',
     function($routeProvider,$locationProvider) {
         $routeProvider.
+            when('/',{
+              templateUrl: 'part/news_list.html',
+              controller: 'listController'
+            }).
             when('/news', {
                 templateUrl: 'part/news_list.html',
                 controller: 'listController'
             }).
-            when('/:id', {
+            when('/news/:id', {
                 templateUrl: 'part/news_detail.html',
                 controller: 'newsDetailCtrl'
             }).
             otherwise({
-                templateUrl: 'part/news_list.html',
-                controller: 'listController'
+                redirectTo: '/news'
             });
 
             // use the HTML5 History API
