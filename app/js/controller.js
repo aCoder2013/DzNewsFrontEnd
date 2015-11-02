@@ -5,6 +5,7 @@ var newsControllers = angular.module('newsControllers', []);
 
 newsControllers.controller('listController', function ($scope,$http) {
     $scope.page = 0;
+    $scope.pageTitle = "DzNews";
     $http.get('/api/news').success(function(data) {
         $scope.newses = data;
     });
@@ -30,10 +31,12 @@ newsControllers.controller("newsDetailCtrl",['$scope', '$routeParams','$http','$
     function($scope, $routeParams,$http,$sce) {
 
           $scope.formContent;
+          $scope.pageTitle;
           $http.get("/api/news/detail/"+$routeParams.id).success(function (data) {
-            $scope.detail = data ;
+            $scope.detail = data.detail ;
             $scope.detail.content = $sce.trustAsHtml($scope.detail.content);
             $scope.actionUrl = $sce.trustAsResourceUrl('/api/detail/'+$scope.detail.id+'/comment/new');
+            $scope.pageTitle = $scope.detail.title;
         });
 
         $scope.processForm = function(){

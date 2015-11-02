@@ -9,14 +9,15 @@ var dznews = angular.module('dznews', [
 
 dznews.config(['$routeProvider','$locationProvider',
     function($routeProvider,$locationProvider) {
+
         $routeProvider.
             when('/',{
               templateUrl: 'part/news_list.html',
-              controller: 'listController'
+              controller: 'listController',
             }).
             when('/news', {
                 templateUrl: 'part/news_list.html',
-                controller: 'listController'
+                controller: 'listController',
             }).
             when('/news/:id', {
                 templateUrl: 'part/news_detail.html',
@@ -25,7 +26,6 @@ dznews.config(['$routeProvider','$locationProvider',
             otherwise({
                 redirectTo: '/news'
             });
-
             // use the HTML5 History API
             $locationProvider.html5Mode(true);
     }]);
