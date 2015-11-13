@@ -6,6 +6,10 @@ var dznews = angular.module('dznews', [
     'newsControllers',
 ]);
 
+dznews.factory('instance', function(){
+    return {};
+});
+
 
 dznews.config(['$routeProvider','$locationProvider',
     function($routeProvider,$locationProvider) {

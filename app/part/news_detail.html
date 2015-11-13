@@ -1,4 +1,5 @@
-
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <style>
         #view-source {
             position: fixed;
@@ -56,15 +57,13 @@
                     </div>
                     <div class="mdl-cell mdl-cell--1-col"></div>
                 </div>
+
                 <div class="mdl-color-text--red-contrast mdl-card__supporting-text comments">
-                  <form action="{{actionUrl}}" method="post">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input type="text" name="content" id="content"/>
-                    </div>
-                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" type="submit">
-                      <i class="material-icons" role="presentation">check</i><span class="visuallyhidden">add comment</span>
-                    </button>
-                  </form>
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"  data-target="#myModal">
+                      参与评论
+                      </button>
+                      <br>
                     <div class="comment mdl-color-text--grey-700">
                         <header class="comment__header">
                             <img src="../img/co1.jpg" class="comment__avatar">
@@ -115,7 +114,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <footer class="mdl-mini-footer">
             <div class="mdl-mini-footer--left-section">
@@ -139,21 +137,6 @@
     </main>
     <div class="mdl-layout__obfuscator"></div>
 </div>
-<script>
-var editor = new MediumEditor('.editable', {
-    toolbar: {
-        buttons: [
-            'bold',
-            'italic',
-            'quote',
-            'anchor'
-        ]
-    },
-    paste: {
-        cleanPastedHTML: false,
-    },
-    placeholder: {
-      text: '欢迎参与评论！'
-  }
-});
-</script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
