@@ -14,9 +14,12 @@
         #news_detail_id img,iframe, object{
           max-width: 100%;
           height: auto;
+          /*img-responsive*/
         }
     </style>
-
+    <!-- <script type="text/javascript">
+        $("img").addClass("img-responsive");
+    </script> -->
 
 <div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
     <main class="mdl-layout__content">
@@ -59,10 +62,29 @@
                 </div>
 
                 <div class="mdl-color-text--red-contrast mdl-card__supporting-text comments">
-                      <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"  data-target="#myModal">
-                      参与评论
-                      </button>
+                  <div class="row">
+                  <form class="" action="#" method="post">
+                    <div class="form-group">
+                      <label for="inputname" class="col-sm-2 control-label">昵称</label>
+                        <input type="text" class="form-control" id="inputname" placeholder="name">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail" class="col-sm-2 control-label">邮箱</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <label for="content">内容</label>
+                      <textarea name="content" class="form-control" rows="3"></textarea>
+                    </div>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary btn-lg btn-block">参与评论</button>
+                  </form>
+                  <div>
+
                       <br>
                     <div class="comment mdl-color-text--grey-700">
                         <header class="comment__header">
