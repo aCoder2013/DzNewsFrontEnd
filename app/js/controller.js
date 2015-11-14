@@ -34,17 +34,24 @@ newsControllers.controller('listController', function ($scope,$http,instance) {
 });
 
 
-newsControllers.controller("newsDetailCtrl",function($scope, $routeParams,$http,$sce,instance) {
+newsControllers.controller("newsDetailCtrl",function($scope, $routeParams,$http,$sce,instance,Notification) {
           if(!(instance.url)){
             //如果是直接通过url访问，则通过newsitem.id获取相应的新闻详情URL
             $http.get("/api/news/"+$routeParams.id).success(function (data) {
             instance.url = data._links.detail.href;
             $http.get(instance.url).success(function (data) {
+
               $scope.detail = data.detail ;
               $scope.detail.content = $sce.trustAsHtml($scope.detail.content);
               $scope.pageTitle = $scope.detail.title;
+              //Get comment
+              $http.get(instance.url+"/comment").success(function (data) {
+                  $scope.commentList = data;
+                  console.log(data);
+              });
               });
             });
+
           }else {
             //如果是通过首页跳转访问则直接获取新闻详情
             $http.get(instance.url).success(function (data) {
@@ -52,6 +59,11 @@ newsControllers.controller("newsDetailCtrl",function($scope, $routeParams,$http,
               $scope.detail.content = $sce.trustAsHtml($scope.detail.content);
               $scope.actionUrl = $sce.trustAsResourceUrl('/api/detail/'+$scope.detail.id+'/comment/new');
               $scope.pageTitle = $scope.detail.title;
+            });
+            //Get comment
+            $http.get(instance.url+"/comment").success(function (data) {
+                $scope.commentList = data;
+                console.log(data);
             });
           };
 
@@ -63,7 +75,8 @@ newsControllers.controller("newsDetailCtrl",function($scope, $routeParams,$http,
               }),{
                 headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
               }).success(function (data) {
-                  window.alert(instance.url);
+                  Notification.success({message: '评论成功', positionX: 'center', positionY: 'bottom'});
+                  $scope.commentList.push(data);
               });
           }
 });

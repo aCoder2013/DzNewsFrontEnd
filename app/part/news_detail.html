@@ -85,7 +85,7 @@
                   <div>
 
                       <br>
-                    <div class="comment mdl-color-text--grey-700">
+                    <!-- <div class="comment mdl-color-text--grey-700">
                         <header class="comment__header">
                             <img src="../img/co1.jpg" class="comment__avatar">
                             <div class="comment__author">
@@ -132,7 +132,31 @@
                                 </nav>
                             </div>
                         </div>
+                    </div> -->
+                    <div class="comment" ng-repeat="co in commentList">
+                      <header class="comment__header">
+                          <img src="../img/co1.jpg" class="comment__avatar">
+                          <div class="comment__author">
+                              <strong>{{co.name}}</strong>
+                              <span>{{co.pub_time}}</span>
+                          </div>
+                      </header>
+                      <div class="comment__text">
+                        {{co.content}}
+                      </div>
+                      <nav class="comment__actions">
+                          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                              <i class="material-icons" role="presentation">thumb_up</i><span class="visuallyhidden">like comment</span>
+                          </button>
+                          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                              <i class="material-icons" role="presentation">thumb_down</i><span class="visuallyhidden">dislike comment</span>
+                          </button>
+                          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                              <i class="material-icons" role="presentation">share</i><span class="visuallyhidden">share comment</span>
+                          </button>
+                      </nav>
                     </div>
+
                 </div>
             </div>
         </div>

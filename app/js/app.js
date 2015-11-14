@@ -4,6 +4,7 @@
 var dznews = angular.module('dznews', [
     'ngRoute',
     'newsControllers',
+    'ui-notification'
 ]);
 
 dznews.factory('instance', function(){
