@@ -68,6 +68,10 @@ newsControllers.controller("newsDetailCtrl",function($scope, $routeParams,$http,
           };
 
           $scope.submitComment = function (comment) {
+              if(!comment.name || !comment.email ||!comment.content){
+                  Notification.error({message: '错误 ！', positionX: 'center', positionY: 'bottom'});
+                  return ;
+              }
               $http.post(instance.url+'/comment/new', $.param({
                 name:comment.name,
                 email:comment.email,

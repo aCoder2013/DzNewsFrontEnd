@@ -1,187 +1,97 @@
-<!-- 新 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <style>
-        #view-source {
-            position: fixed;
-            display: block;
-            right: 0;
-            bottom: 0;
-            margin-right: 40px;
-            margin-bottom: 40px;
-            z-index: 900;
-        }
 
-        #news_detail_id img,iframe, object{
-          max-width: 100%;
-          height: auto;
-          /*img-responsive*/
-        }
-    </style>
-    <!-- <script type="text/javascript">
-        $("img").addClass("img-responsive");
-    </script> -->
-<div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
-    <main class="mdl-layout__content">
-        <div class="demo-back">
-            <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" href="/" title="go back" role="button">
-                <i class="material-icons" role="presentation">arrow_back</i>
-            </a>
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>{{detail.title}}</h1>
+                        <span class="meta">Posted by {{detail.auth}} On {{detail.pubTime}}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="demo-blog__posts mdl-grid">
-            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
-                <div class="mdl-card__media mdl-color-text--grey-50">
-                    <h3>{{detail.title}}</h3>
-                </div>
-                <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
-                    <div class="minilogo"></div>
-                    <div>
-                        <strong>{{detail.auth}}</strong>
-                        <span>{{detail.pubTime}}</span>
-                    </div>
-                    <div class="section-spacer"></div>
-                    <div class="meta__favorites">
-                        {{detail.beenRead}} <i class="material-icons" role="presentation">favorite</i>
-                        <span class="visuallyhidden">favorites</span>
-                    </div>
-                    <div>
-                        <i class="material-icons" role="presentation">bookmark</i>
-                        <span class="visuallyhidden">bookmark</span>
-                    </div>
-                    <div>
-                        <i class="material-icons" role="presentation">share</i>
-                        <span class="visuallyhidden">share</span>
-                    </div>
-                </div>
-                <div class="mdl-color-text--grey-700 mdl-grid mdl-card__supporting-text meta">
-                    <div class="mdl-cell mdl-cell--1-col"></div>
-                    <div class="mdl-cell mdl-cell--8-col">
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                       <div id="news_detail_id" ng-bind-html='detail.content'></div>
-                    </div>
-                    <div class="mdl-cell mdl-cell--1-col"></div>
-                </div>
-
-                <div class="mdl-color-text--red-contrast mdl-card__supporting-text comments">
-                  <div class="row">
-                  <form class="" method="post">
-                    <div class="form-group">
-                      <label for="name" class="col-sm-2 control-label">昵称</label>
-                        <input type="text" class="form-control" id="name" placeholder="name" ng-model="comment.name">
-                    </div>
-                    <div class="form-group">
-                      <label for="email" class="col-sm-2 control-label">邮箱</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email" ng-model="comment.email">
-                    </div>
-                    <!-- <div class="form-group">
-                      <label for="password" class="col-sm-2 control-label">密码</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" >
-                    </div> -->
-                    <div class="form-group">
-                      <label for="content">内容</label>
-                      <textarea name="content" class="form-control" rows="3" ng-model="comment.content"></textarea>
-                    </div>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="submitComment(comment)" >参与评论</button>
-                  </form>
-                  <div>
-
-                      <br>
-                    <!-- <div class="comment mdl-color-text--grey-700">
-                        <header class="comment__header">
-                            <img src="../img/co1.jpg" class="comment__avatar">
-                            <div class="comment__author">
-                                <strong>James Splayd</strong>
-                                <span>2 days ago</span>
-                            </div>
-                        </header>
-                        <div class="comment__text">
-                            In in culpa nulla elit esse. Ex cillum enim aliquip sit sit ullamco ex eiusmod fugiat. Cupidatat ad minim officia mollit laborum magna dolor tempor cupidatat mollit. Est velit sit ad aliqua ullamco laborum excepteur dolore proident incididunt in labore elit.
-                        </div>
-                        <nav class="comment__actions">
-                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                                <i class="material-icons" role="presentation">thumb_up</i><span class="visuallyhidden">like comment</span>
-                            </button>
-                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                                <i class="material-icons" role="presentation">thumb_down</i><span class="visuallyhidden">dislike comment</span>
-                            </button>
-                            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                                <i class="material-icons" role="presentation">share</i><span class="visuallyhidden">share comment</span>
-                            </button>
-                        </nav>
-                        <div class="comment__answers">
-                            <div class="comment">
-                                <header class="comment__header">
-                                    <img src="/img/co2.jpg" class="comment__avatar">
-                                    <div class="comment__author">
-                                        <strong>John Dufry</strong>
-                                        <span>2 days ago</span>
-                                    </div>
-                                </header>
-                                <div class="comment__text">
-                                    Yep, agree!
-                                </div>
-                                <nav class="comment__actions">
-                                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                                        <i class="material-icons" role="presentation">thumb_up</i><span class="visuallyhidden">like comment</span>
-                                    </button>
-                                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                                        <i class="material-icons" role="presentation">thumb_down</i><span class="visuallyhidden">dislike comment</span>
-                                    </button>
-                                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                                        <i class="material-icons" role="presentation">share</i><span class="visuallyhidden">share comment</span>
-                                    </button>
-                                </nav>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="comment" ng-repeat="co in commentList">
-                      <header class="comment__header">
-                          <img src="../img/co1.jpg" class="comment__avatar">
-                          <div class="comment__author">
-                              <strong>{{co.name}}</strong>
-                              <span>{{co.pub_time}}</span>
-                          </div>
-                      </header>
-                      <div class="comment__text">
-                        {{co.content}}
-                      </div>
-                      <nav class="comment__actions">
-                          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                              <i class="material-icons" role="presentation">thumb_up</i><span class="visuallyhidden">like comment</span>
-                          </button>
-                          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                              <i class="material-icons" role="presentation">thumb_down</i><span class="visuallyhidden">dislike comment</span>
-                          </button>
-                          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-                              <i class="material-icons" role="presentation">share</i><span class="visuallyhidden">share comment</span>
-                          </button>
-                      </nav>
-                    </div>
-
                 </div>
             </div>
         </div>
-        <footer class="mdl-mini-footer">
-            <div class="mdl-mini-footer--left-section">
-                <button class="mdl-mini-footer--social-btn social-btn social-btn__twitter">
-                    <span class="visuallyhidden">Twitter</span>
-                </button>
-                <button class="mdl-mini-footer--social-btn social-btn social-btn__blogger">
-                    <span class="visuallyhidden">Facebook</span>
-                </button>
-                <button class="mdl-mini-footer--social-btn social-btn social-btn__gplus">
-                    <span class="visuallyhidden">Google Plus</span>
-                </button>
-            </div>
-            <div class="mdl-mini-footer--right-section">
-                <button class="mdl-mini-footer--social-btn social-btn__share">
-                    <i class="material-icons" role="presentation">share</i>
-                    <span class="visuallyhidden">share</span>
-                </button>
-            </div>
-        </footer>
-    </main>
-    <div class="mdl-layout__obfuscator"></div>
-</div>
-
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    </article>
+    <hr>
+    <!--Comment Content -->
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="row">
+                <form class="" method="post" name="comment_form">
+                  <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">昵称</label>
+                      <input type="text" class="form-control" id="name" placeholder="name"
+                        ng-minlength="3"
+                        ng-model="comment.name" required >
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">邮箱</label>
+                      <input type="email" class="form-control" id="email" placeholder="Email"
+                      ng-minlength="6"
+                      ng-model="comment.email"
+                      required>
+                  </div>
+                  <div class="form-group">
+                    <label for="content" class="col-sm-2 control-label">内容</label>
+                    <textarea name="content" class="form-control" rows="3" ng-model="comment.content" required></textarea>
+                  </div>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary btn-block"  ng-disabled="comment_form.$invalid"  ng-click="submitComment(comment)">
+                    参与评论
+                  </button>
+                </form>
+              </div>
+              <hr>
+              <!--评论列表-->
+              <div class="row">
+                    <div class="">
+                        <h3 id="newest_comment_header"><strong>最新评论</strong></h3>
+                    </div><!--Comment Title-->
+                    <hr>
+                    <div class="words">
+                      <div class="media" ng-repeat="co in commentList">
+                        <div class="media-left">
+                          <a href="#">
+                            <img class="media-object comment-img" src="img/profile-pic-300px.jpg" alt="头像">
+                          </a>
+                        </div>
+                        <div class="media-body cont">
+                          <a class="media-heading name">{{co.name}}</h4></a>
+                            :
+                            <span>{{co.content}}</span>
+                            <div class="time">
+                              <span>{{co.pub_time}}</span>
+                            </div>
+                        </div>
+                        <hr>
+                      </div><!--media-->
+                     </div>
+              </div>
+          </div>
+        </div>
+    </div><!--Comment Container-->
+    <style type="text/css">
+      #newest_comment_header{
+        color:#03A9F4;
+      }
+      .cont{color: #666666; font-size: 14px; padding-bottom: 10px;}
+      .name{color: #03A9F4; text-decoration: none;}
+      .comment-img{
+        width: 40px;
+        float: left;/* margin-right: 18px;*/
+      }
+      .time{font-size: 12px; color: #cccccc; height: 14px; line-height: 14px;}
+    </style>
