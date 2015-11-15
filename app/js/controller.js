@@ -63,7 +63,6 @@ newsControllers.controller("newsDetailCtrl",function($scope, $routeParams,$http,
             //Get comment
             $http.get(instance.url+"/comment").success(function (data) {
                 $scope.commentList = data;
-                console.log(data);
             });
           };
 
