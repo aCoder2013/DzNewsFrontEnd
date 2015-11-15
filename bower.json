@@ -8,6 +8,6 @@
     "angular-route": "1.4.x",
     "angular-resource": "1.4.x",
     "angular-animate": "1.4.x",
-    "angular-resource": "1.4.x"
+    "angular-ui-notification": "~0.0.14"
   }
 }
